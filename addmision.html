@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>New Admission - Guru Digital Library</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#07111f;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:rgba(0,0,0,0.4);
+      backdrop-filter:blur(10px);
+      position:sticky;
+      top:0;
+      z-index:1000;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo{
+      font-size:30px;
+      font-weight:700;
+      color:#FFD700;
+    }
+
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:30px;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#FFD700;
+    }
+
+    /* HERO */
+
+    .hero{
+      padding:90px 8% 60px;
+      text-align:center;
+      background:
+      linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+      url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero h1{
+      font-size:60px;
+      color:#FFD700;
+      margin-bottom:20px;
+      text-shadow:0 0 20px rgba(255,215,0,0.4);
+    }
+
+    .hero p{
+      font-size:20px;
+      color:#ddd;
+      max-width:800px;
+      margin:auto;
+      line-height:1.8;
+    }
+
+    /* CONTAINER */
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:60px auto;
+    }
+
+    /* INFO CARDS */
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+      margin-bottom:50px;
+    }
+
+    .info-card{
+      background:rgba(255,255,255,0.05);
+      padding:30px;
+      border-radius:25px;
+      border:1px solid rgba(255,255,255,0.08);
+      transition:0.4s;
+      backdrop-filter:blur(10px);
+    }
+
+    .info-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 15px 35px rgba(0,0,0,0.4);
+    }
+
+    .info-card h3{
+      color:#FFD700;
+      margin-bottom:15px;
+      font-size:24px;
+    }
+
+    .info-card p{
+      color:#ddd;
+      line-height:1.8;
+    }
+
+    /* FORM */
+
+    .form-box{
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      padding:50px;
+      border-radius:30px;
+      backdrop-filter:blur(10px);
+      box-shadow:0 15px 35px rgba(0,0,0,0.3);
+    }
+
+    .form-title{
+      text-align:center;
+      font-size:42px;
+      margin-bottom:40px;
+      color:#FFD700;
+    }
+
+    form{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:25px;
+    }
+
+    .input-box{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .input-box label{
+      margin-bottom:10px;
+      font-size:15px;
+      color:#FFD700;
+    }
+
+    .input-box input,
+    .input-box select,
+    .input-box textarea{
+      padding:16px;
+      border:none;
+      border-radius:15px;
+      background:#111827;
+      color:white;
+      outline:none;
+      font-size:15px;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    textarea{
+      resize:none;
+      height:120px;
+    }
+
+    .full{
+      grid-column:1/-1;
+    }
+
+    .submit-btn{
+      grid-column:1/-1;
+      padding:18px;
+      background:#FFD700;
+      color:black;
+      border:none;
+      border-radius:50px;
+      font-size:20px;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.4s;
+    }
+
+    .submit-btn:hover{
+      transform:translateY(-5px);
+      box-shadow:0 10px 25px rgba(255,215,0,0.4);
+    }
+
+    /* FEATURES */
+
+    .features{
+      margin-top:70px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .feature{
+      background:#111827;
+      padding:30px;
+      border-radius:25px;
+      text-align:center;
+      transition:0.4s;
+    }
+
+    .feature:hover{
+      transform:scale(1.05);
+      background:#172033;
+    }
+
+    .feature h3{
+      margin:20px 0 15px;
+      color:#FFD700;
+      font-size:24px;
+    }
+
+    .feature p{
+      color:#ddd;
+      line-height:1.8;
+    }
+
+    /* FOOTER */
+
+    footer{
+      margin-top:80px;
+      padding:50px 8%;
+      background:#020817;
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+
+    footer h2{
+      color:#FFD700;
+      margin-bottom:15px;
+      font-size:36px;
+    }
+
+    footer p{
+      color:#ccc;
+      line-height:1.8;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:40px;
+      }
+
+      nav{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .form-box{
+        padding:30px 20px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">Guru Digital Library</div>
+
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">Admission</a></li>
+      <li><a href="#">Know Status</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <h1>New Admission</h1>
+
+    <p>
+      Join Guru Digital Library and get a premium study environment
+      with smart facilities, silent zone, WiFi, CCTV security,
+      online fee tracking and modern digital management system.
+    </p>
+
+  </section>
+
+  <!-- CONTAINER -->
+
+  <div class="container">
+
+    <!-- INFO -->
+
+    <div class="info-grid">
+
+      <div class="info-card">
+        <h3>📚 Monthly Fees</h3>
+        <p>
+          Library Monthly Fees Only ₹500
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>🪑 Total Seats</h3>
+        <p>
+          Only 23 Premium Seats Available
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>🎁 Discount Facility</h3>
+        <p>
+          Special Discount Available For Students
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>📲 WhatsApp Update</h3>
+        <p>
+          Fees & Status Notification On WhatsApp
+        </p>
+      </div>
+
+    </div>
+
+    <!-- FORM -->
+
+    <div class="form-box">
+
+      <h2 class="form-title">Admission Form</h2>
+
+      <form id="admissionForm">
+
+        <div class="input-box">
+          <label>Student Name</label>
+          <input type="text" placeholder="Enter Student Name" required>
+        </div>
+
+        <div class="input-box">
+          <label>Father Name</label>
+          <input type="text" placeholder="Enter Father Name" required>
+        </div>
+
+        <div class="input-box">
+          <label>Aadhaar Number</label>
+          <input type="text" placeholder="Enter Aadhaar Number" required>
+        </div>
+
+        <div class="input-box">
+          <label>Parent Mobile Number</label>
+          <input type="text" placeholder="Enter Mobile Number" required>
+        </div>
+
+        <div class="input-box">
+          <label>WhatsApp Number</label>
+          <input type="text" placeholder="Enter WhatsApp Number" required>
+        </div>
+
+        <div class="input-box">
+          <label>Date Of Birth</label>
+          <input type="date" required>
+        </div>
+
+        <div class="input-box">
+          <label>Admission Date</label>
+          <input type="date" required>
+        </div>
+
+        <div class="input-box">
+          <label>Seat Number</label>
+
+          <select required>
+            <option>Select Seat</option>
+            <option>Seat 1</option>
+            <option>Seat 2</option>
+            <option>Seat 3</option>
+            <option>Seat 4</option>
+            <option>Seat 5</option>
+            <option>Seat 6</option>
+            <option>Seat 7</option>
+            <option>Seat 8</option>
+            <option>Seat 9</option>
+            <option>Seat 10</option>
+            <option>Seat 11</option>
+            <option>Seat 12</option>
+            <option>Seat 13</option>
+            <option>Seat 14</option>
+            <option>Seat 15</option>
+            <option>Seat 16</option>
+            <option>Seat 17</option>
+            <option>Seat 18</option>
+            <option>Seat 19</option>
+            <option>Seat 20</option>
+            <option>Seat 21</option>
+            <option>Seat 22</option>
+            <option>Seat 23</option>
+          </select>
+
+        </div>
+
+        <div class="input-box">
+          <label>Discount</label>
+          <input type="number" placeholder="Enter Discount">
+        </div>
+
+        <div class="input-box full">
+          <label>Address</label>
+          <textarea placeholder="Enter Full Address"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          Submit Admission
+        </button>
+
+      </form>
+
+    </div>
+
+    <!-- FEATURES -->
+
+    <div class="features">
+
+      <div class="feature">
+        <h3>📶 Free WiFi</h3>
+        <p>
+          High Speed Internet Facility For Students
+        </p>
+      </div>
+
+      <div class="feature">
+        <h3>❄️ AC Room</h3>
+        <p>
+          Comfortable Air Conditioned Study Zone
+        </p>
+      </div>
+
+      <div class="feature">
+        <h3>📹 CCTV Security</h3>
+        <p>
+          24×7 Security & Monitoring Facility
+        </p>
+      </div>
+
+      <div class="feature">
+        <h3>🔋 Power Backup</h3>
+        <p>
+          Continuous Study Without Electricity Problems
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h2>Guru Digital Library</h2>
+
+    <p>
+      Jahangirganj, Ambedkar Nagar, Uttar Pradesh
+    </p>
+
+    <p>
+      Founder: Deepak Sir
+    </p>
+
+    <p>
+      © 2026 Guru Digital Library | All Rights Reserved
+    </p>
+
+  </footer>
+
+  <script>
+
+    document.getElementById("admissionForm").addEventListener("submit",function(e){
+
+      e.preventDefault();
+
+      alert("Admission Submitted Successfully!");
+
+    });
+
+  </script>
+
+</body>
+</html>
