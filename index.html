@@ -1,462 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Guru Digital Library</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guru Digital Library</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
+<style>
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Poppins',sans-serif;
-    }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
-    body{
-      background:#07111f;
-      color:white;
-      overflow-x:hidden;
-    }
+body{background:#07111f;color:white;}
 
-    html{
-      scroll-behavior:smooth;
-    }
+nav{
+width:100%;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:fixed;
+top:0;
+background:rgba(0,0,0,0.5);
+}
 
-    /* NAVBAR */
+.logo{font-size:28px;font-weight:bold;color:#FFD700;}
 
-    nav{
-      width:100%;
-      padding:20px 8%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:fixed;
-      top:0;
-      z-index:1000;
-      background:rgba(0,0,0,0.35);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-    }
+nav ul{display:flex;gap:20px;list-style:none;}
 
-    .logo{
-      font-size:32px;
-      font-weight:700;
-      color:#FFD700;
-    }
+nav ul li a{
+color:white;
+text-decoration:none;
+font-size:16px;
+}
 
-    nav ul{
-      display:flex;
-      gap:35px;
-      list-style:none;
-    }
+nav ul li a:hover{color:#FFD700;}
 
-    nav ul li a{
-      text-decoration:none;
-      color:white;
-      font-size:17px;
-      transition:0.3s;
-    }
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da') no-repeat center/cover;
+}
 
-    nav ul li a:hover{
-      color:#FFD700;
-    }
+.hero-content h1{
+font-size:50px;
+color:#FFD700;
+}
 
-    /* HERO SECTION */
+.hero-content p{
+margin-top:15px;
+font-size:18px;
+}
 
-    .hero{
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding:0 8%;
-      background:
-      linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.75)),
-      url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1600&auto=format&fit=crop');
-      background-size:cover;
-      background-position:center;
-    }
+.hero-btns{margin-top:30px;}
 
-    .hero-content h1{
-      font-size:70px;
-      color:#FFD700;
-      margin-bottom:20px;
-      text-shadow:0 0 25px rgba(255,215,0,0.5);
-    }
+.btn{
+padding:12px 25px;
+margin:10px;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+}
 
-    .hero-content p{
-      font-size:22px;
-      max-width:850px;
-      line-height:1.8;
-      color:#e5e5e5;
-      margin:auto;
-    }
+.btn-primary{
+background:#FFD700;
+color:black;
+}
 
-    .hero-btns{
-      margin-top:40px;
-      display:flex;
-      justify-content:center;
-      gap:20px;
-      flex-wrap:wrap;
-    }
+.btn-secondary{
+border:2px solid #FFD700;
+color:#FFD700;
+}
 
-    .btn{
-      padding:16px 38px;
-      border:none;
-      border-radius:50px;
-      font-size:17px;
-      font-weight:600;
-      cursor:pointer;
-      transition:0.4s;
-      text-decoration:none;
-    }
+.btn:hover{opacity:0.8;}
 
-    .btn-primary{
-      background:#FFD700;
-      color:black;
-    }
+.section{padding:80px 8%;text-align:center;}
 
-    .btn-primary:hover{
-      transform:translateY(-5px);
-      box-shadow:0 10px 25px rgba(255,215,0,0.4);
-    }
+.section-title{
+font-size:40px;
+margin-bottom:30px;
+color:#FFD700;
+}
 
-    .btn-secondary{
-      border:2px solid #FFD700;
-      color:#FFD700;
-      background:transparent;
-    }
+footer{
+background:#000;
+padding:20px;
+text-align:center;
+}
 
-    .btn-secondary:hover{
-      background:#FFD700;
-      color:black;
-      transform:translateY(-5px);
-    }
-
-    /* ABOUT */
-
-    .section{
-      padding:100px 8%;
-    }
-
-    .section-title{
-      text-align:center;
-      font-size:48px;
-      margin-bottom:60px;
-      color:#FFD700;
-    }
-
-    .about-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-      gap:30px;
-    }
-
-    .card{
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,0.08);
-      padding:35px;
-      border-radius:25px;
-      transition:0.4s;
-      backdrop-filter:blur(10px);
-    }
-
-    .card:hover{
-      transform:translateY(-10px);
-      box-shadow:0 15px 35px rgba(0,0,0,0.35);
-    }
-
-    .card h3{
-      color:#FFD700;
-      margin-bottom:18px;
-      font-size:28px;
-    }
-
-    .card p{
-      color:#d8d8d8;
-      line-height:1.8;
-      font-size:16px;
-    }
-
-    /* FEATURES */
-
-    .features{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:25px;
-      margin-top:50px;
-    }
-
-    .feature-box{
-      background:#111827;
-      padding:35px;
-      border-radius:22px;
-      text-align:center;
-      transition:0.4s;
-    }
-
-    .feature-box:hover{
-      transform:scale(1.05);
-      background:#172033;
-    }
-
-    .feature-box h4{
-      color:#FFD700;
-      margin:18px 0;
-      font-size:24px;
-    }
-
-    .feature-box p{
-      color:#d5d5d5;
-      line-height:1.7;
-    }
-
-    /* BRANCH */
-
-    .branch-container{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:25px;
-      margin-top:40px;
-    }
-
-    .branch{
-      background:linear-gradient(145deg,#101828,#1d2a44);
-      padding:30px;
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,0.08);
-    }
-
-    .branch h3{
-      color:#FFD700;
-      margin-bottom:15px;
-      font-size:26px;
-    }
-
-    .branch p{
-      color:#ddd;
-      line-height:1.8;
-    }
-
-    /* FOOTER */
-
-    footer{
-      background:#020817;
-      padding:50px 8%;
-      text-align:center;
-      border-top:1px solid rgba(255,255,255,0.08);
-    }
-
-    footer h2{
-      color:#FFD700;
-      margin-bottom:15px;
-      font-size:38px;
-    }
-
-    footer p{
-      color:#cfcfcf;
-      margin-top:10px;
-      line-height:1.8;
-    }
-
-    /* RESPONSIVE */
-
-    @media(max-width:900px){
-
-      .hero-content h1{
-        font-size:48px;
-      }
-
-      nav{
-        flex-direction:column;
-        gap:15px;
-      }
-
-      nav ul{
-        flex-wrap:wrap;
-        justify-content:center;
-      }
-
-    }
-
-  </style>
+</style>
 </head>
+
 <body>
 
-  <!-- NAVBAR -->
+<nav>
+<div class="logo">Guru Digital Library</div>
 
-  <nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="admission.html">Admission</a></li>
+<li><a href="status.html">Know Status</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</nav>
 
-    <div class="logo">Guru Digital Library</div>
+<section class="hero">
+<div class="hero-content">
 
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Admission</a></li>
-      <li><a href="#">Know Your Status</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
+<h1>Welcome To Guru Digital Library</h1>
 
-  </nav>
+<p>Premium Digital Study Environment with Smart Admission & Fee Tracking System.</p>
 
-  <!-- HERO SECTION -->
+<div class="hero-btns">
 
-  <section class="hero">
+<a href="admission.html" class="btn btn-primary">New Admission</a>
 
-    <div class="hero-content">
+<a href="status.html" class="btn btn-secondary">Check Status</a>
 
-      <h1>Welcome To Guru Digital Library</h1>
+</div>
 
-      <p>
-        Premium Digital Study Environment With Smart Admission System,
-        Online Fee Tracking, Student Status Checking,
-        Silent Study Zone, CCTV Security & Modern Learning Facilities.
-      </p>
+</div>
+</section>
 
-      <div class="hero-btns">
+<section class="section">
+<h2 class="section-title">About Library</h2>
+<p>Best Digital Study Library with AC, WiFi & Silent Zone.</p>
+</section>
 
-        <a href="#" class="btn btn-primary">New Admission</a>
-
-        <a href="#" class="btn btn-secondary">Check Status</a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- ABOUT -->
-
-  <section class="section">
-
-    <h2 class="section-title">About Our Library</h2>
-
-    <div class="about-grid">
-
-      <div class="card">
-        <h3>Founder</h3>
-
-        <p>
-          Founder: Deepak Sir <br><br>
-          Guru Digital Library provides students a premium and peaceful
-          study environment with modern digital facilities and disciplined atmosphere.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Library Details</h3>
-
-        <p>
-          Address: Jahangirganj, Ambedkar Nagar, Uttar Pradesh <br><br>
-          Total Seats: 23 <br>
-          Monthly Fees: ₹500
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Our Mission</h3>
-
-        <p>
-          Our mission is to provide quality study space,
-          motivation and digital facilities to students
-          preparing for school, college and competitive exams.
-        </p>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- FEATURES -->
-
-  <section class="section">
-
-    <h2 class="section-title">Library Facilities</h2>
-
-    <div class="features">
-
-      <div class="feature-box">
-        <h4>📶 Free WiFi</h4>
-        <p>High Speed Internet For Students.</p>
-      </div>
-
-      <div class="feature-box">
-        <h4>❄️ AC Room</h4>
-        <p>Comfortable Air Conditioned Environment.</p>
-      </div>
-
-      <div class="feature-box">
-        <h4>📹 CCTV Security</h4>
-        <p>24×7 Security Surveillance System.</p>
-      </div>
-
-      <div class="feature-box">
-        <h4>🔋 Power Backup</h4>
-        <p>Continuous Study Without Electricity Problems.</p>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- BRANCHES -->
-
-  <section class="section">
-
-    <h2 class="section-title">Our Branches</h2>
-
-    <div class="branch-container">
-
-      <div class="branch">
-        <h3>Jahangirganj Branch</h3>
-
-        <p>
-          Main Digital Library Branch with premium study environment.
-        </p>
-      </div>
-
-      <div class="branch">
-        <h3>Ambedkar Nagar Branch</h3>
-
-        <p>
-          Silent Reading Hall with smart facilities and WiFi support.
-        </p>
-      </div>
-
-      <div class="branch">
-        <h3>Purnpur Branch</h3>
-
-        <p>
-          Modern Study Zone for competitive exam students.
-        </p>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <h2>Guru Digital Library</h2>
-
-    <p>
-      Jahangirganj, Ambedkar Nagar, Uttar Pradesh
-    </p>
-
-    <p>
-      Founder: Deepak Sir
-    </p>
-
-    <p>
-      © 2026 Guru Digital Library | All Rights Reserved
-    </p>
-
-  </footer>
+<footer>
+<p>© 2026 Guru Digital Library</p>
+</footer>
 
 </body>
 </html>
