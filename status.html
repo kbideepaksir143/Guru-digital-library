@@ -20,4 +20,129 @@ nav ul li a{text-decoration:none;color:white;}
 .hero{text-align:center;padding:80px 8%;}
 .hero h1{font-size:50px;color:#FFD700;}
 
-.container{width:
+.container{width:90%;max-width:900px;margin:auto;}
+
+.search-box{
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:20px;
+text-align:center;
+margin-bottom:30px;
+}
+
+.search-box input{
+width:70%;
+padding:15px;
+border-radius:10px;
+border:none;
+outline:none;
+}
+
+.search-box button{
+padding:15px 25px;
+background:#FFD700;
+border:none;
+border-radius:10px;
+cursor:pointer;
+margin-left:10px;
+}
+
+.result-box{
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:20px;
+display:none;
+}
+
+.result-box h2{
+color:#FFD700;
+margin-bottom:20px;
+}
+
+.result-item{
+margin-bottom:10px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">Guru Digital Library</div>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="#">Admission</a></li>
+<li><a href="#">Know Status</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+<h1>Know Your Status</h1>
+</section>
+
+<div class="container">
+
+<div class="search-box">
+<input type="text" id="search" placeholder="Enter User ID or Mobile">
+<button onclick="getStatus()">Search</button>
+</div>
+
+<div class="result-box" id="resultBox">
+<h2>Student Details</h2>
+
+<div class="result-item" id="userId"></div>
+<div class="result-item" id="name"></div>
+<div class="result-item" id="father"></div>
+<div class="result-item" id="mobile"></div>
+<div class="result-item" id="seat"></div>
+
+<h2>Fees Details</h2>
+
+<div class="result-item" id="total"></div>
+<div class="result-item" id="paid"></div>
+<div class="result-item" id="due"></div>
+
+</div>
+
+</div>
+
+<script>
+
+const scriptURL = "https://script.google.com/macros/s/AKfycby6KPsFrva2S5tlNv_8DGv2NGx2lupfockgF6JGGOipRPXe2tuYhUzb7gSiBh3u9ukv1w/exec";
+
+function getStatus(){
+
+let value = document.getElementById("search").value;
+
+fetch(scriptURL + "?search=" + value)
+.then(res => res.json())
+.then(data => {
+
+if(data.status == "not_found"){
+alert("❌ Record Not Found");
+return;
+}
+
+document.getElementById("resultBox").style.display = "block";
+
+document.getElementById("userId").innerText = "User ID: " + data.userId;
+document.getElementById("name").innerText = "Name: " + data.name;
+document.getElementById("father").innerText = "Father: " + data.father;
+document.getElementById("mobile").innerText = "Mobile: " + data.mobile;
+document.getElementById("seat").innerText = "Seat: " + data.seat;
+
+document.getElementById("total").innerText = "Total Fees: " + data.total;
+document.getElementById("paid").innerText = "Paid: " + data.paid;
+document.getElementById("due").innerText = "Due: " + data.due;
+
+})
+.catch(err => {
+alert("Error: " + err);
+});
+
+}
+
+</script>
+
+</body>
+</html>
